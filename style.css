@@ -1,0 +1,187 @@
+/* Corpo da página */
+body {
+    font-family: 'Comic Neue', Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #ffb3d9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container principal */
+.container {
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Título */
+h1 {
+    color: #ff69b4;
+    margin-bottom: 20px;
+}
+
+/* Porquinho */
+#porquinho {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+/* Texto da situação */
+#situacao-texto {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+/* Botões de opções – cores sólidas */
+#opcoes button {
+    display: block;
+    width: 80%;
+    padding: 12px;
+    margin: 10px auto;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Cores sólidas fofas – sem degradê */
+.btn-comprar { background-color: #f87cb8; color:white; }
+.btn-guardar { background-color: #f16eb4; color:white; }
+.btn-esperar { background-color: #eb788b; color:white; }
+.btn-parcial { background-color: #f172b2; color:white; }
+
+#opcoes button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Feedback correto/errado */
+button.certa { background-color: #a2f5a2; color: #006400; }
+button.errada { background-color: #f5a2a2; color: #800000; }
+
+/* Mensagem de feedback */
+#mensagem-feedback {
+    font-size: 18px;
+    margin: 15px 0;
+    min-height: 24px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#mensagem-feedback.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Status */
+#status {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.status-item {
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.5s;
+}
+
+.status-item.bounce {
+    animation: bounce 0.5s;
+}
+
+/* Animação bounce */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Botão Próxima Situação */
+.btn-proxima {
+    background-color: #ff69b4;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    display: none;
+}
+
+.btn-proxima:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-proxima.aparecer {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Animações gerais */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Resultado final */
+#resultado {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #ff1493;
+}
+
+/* Efeitos fofinhos extras */
+/* Porquinho pulando mais nítido */
+@keyframes pular {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-20px) scale(1.1); }
+    50% { transform: translateY(-30px) scale(1.2); }
+    75% { transform: translateY(-20px) scale(1.1); }
+}
+
+/* Moedas caindo mais chamativas */
+@keyframes cairMoeda {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(75px) rotate(180deg); opacity: 0.8; }
+    100% { transform: translateY(150px) rotate(360deg); opacity: 0; }
+}
+
+.moeda {
+    position: absolute;
+    font-size: 28px;
+    pointer-events: none;
+    animation: cairMoeda 1s linear forwards;
+}
+
+/* Estrelinhas piscando mais visíveis */
+@keyframes piscar {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    25% { opacity: 0.8; transform: scale(1.2) rotate(10deg); }
+    50% { opacity: 0.4; transform: scale(1.5) rotate(-10deg); }
+    75% { opacity: 0.8; transform: scale(1.2) rotate(10deg); }
+}
+
+.estrela {
+    position: absolute;
+    font-size: 22px;
+    pointer-events: none;
+    animation: piscar 1s ease-in-out;
+}
