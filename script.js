@@ -2,41 +2,71 @@ const situacoes = [
     {
         texto: "Você quer comprar um sorvete 🍦.",
         opcoes: [
-            { texto: "Guardar moedas para comprar depois", tipo: "certa", mensagem: "✅ Ótimo! Guardar moedas ajuda você a alcançar seus objetivos e aprender a planejar." },
-            { texto: "Comprar o sorvete agora", tipo: "medio", mensagem: "⚠ Comer agora é divertido, mas se planejar você poderá comprar algo ainda maior depois." },
-            { texto: "Pensar antes de comprar", tipo: "medio", mensagem: "✅ Pensar antes é uma boa ideia! Pensar antes ajuda a tomar decisões melhores." }
-        ]
-    },
-    {
-        texto: "Seu brinquedo favorito quebrou 😢.",
-        opcoes: [
-            { texto: "Ignorar e deixar quebrado", tipo: "errada", mensagem: "⚠ Ignorar não resolve, mas você pode aprender tentando consertar ou pedir ajuda." },
-            { texto: "Tentar consertar sozinho", tipo: "certa", mensagem: "✅ Consertar sozinho ajuda a aprender habilidades novas e cuidar das suas coisas!" },
-            { texto: "Pedir ajuda a alguém", tipo: "medio", mensagem: "✅ Pedir ajuda é ótimo! Trabalhar junto ensina colaboração e paciência." }
-        ]
-    },
-    {
-        texto: "Você viu uma promoção de balas 🍬 e quer comprar.",
-        opcoes: [
-            { texto: "Comprar todas as balas agora", tipo: "errada", mensagem: "⚠ Comprar tudo gasta seu dinheiro rápido, mas você pode aprender a planejar melhor para próximas compras." },
-            { texto: "Guardar dinheiro para algo que realmente quer", tipo: "certa", mensagem: "✅ Guardar moedas ajuda você a comprar coisas mais importantes e ensina planejamento!" },
-            { texto: "Comprar só algumas balas", tipo: "medio", mensagem: "✅ Comprar algumas balas é equilibrado! Ensina moderação e controle do dinheiro." }
-        ]
-    },
-    {
-        texto: "Você quer ganhar uma estrelinha ⭐.",
-        opcoes: [
-            { texto: "Guardar moedas para comprar depois", tipo: "certa", mensagem: "✅ Guardar moedas ajuda a alcançar seu objetivo com paciência e disciplina!" },
-            { texto: "Pedir agora", tipo: "medio", mensagem: "⚠ Pedir agora pode funcionar, mas planejar e esperar ensina paciência e planejamento." },
-            { texto: "Esperar um pouco", tipo: "medio", mensagem: "✅ Esperar é bom! Aprender a esperar ajuda a desenvolver autocontrole." }
+            "Guardar moedas no cofrinho para comprar depois",
+            "Comprar só um sorvete pequeno agora",
+            "Gastar todas as moedas de uma vez"
+        ],
+        tipos: ["certa", "medio", "errada"],
+        mensagens: [
+            "✅ Muito bem! Assim você consegue o sorvete e ainda pode juntar para algo maior.",
+            "⚠ Está ok! Você se diverte, mas ainda poderia economizar mais.",
+            "❌ Não é legal gastar tudo sem pensar. Planejar ajuda você a ter mais escolhas!"
         ]
     },
     {
         texto: "Você quer comprar um brinquedo novo 🧸.",
         opcoes: [
-            { texto: "Guardar moedas no cofrinho", tipo: "certa", mensagem: "✅ Guardar moedas é uma ótima escolha! Ensina planejamento e paciência." },
-            { texto: "Comprar agora", tipo: "medio", mensagem: "⚠ Comprar agora pode ser divertido, mas guardar permite alcançar objetivos maiores." },
-            { texto: "Dar para um amigo", tipo: "medio", mensagem: "✅ Dar para um amigo é gentil! Ensina generosidade e compartilhamento." }
+            "Guardar moedas no cofrinho",
+            "Comprar um brinquedo barato agora",
+            "Gastar todas as moedas em qualquer brinquedo sem pensar"
+        ],
+        tipos: ["certa", "medio", "errada"],
+        mensagens: [
+            "✅ Excelente! Economizar ajuda a conseguir o brinquedo que você realmente quer.",
+            "⚠ Está melhorando! Você se diverte, mas ainda pode guardar para algo maior.",
+            "❌ Não é legal gastar todo o dinheiro sem planejar!"
+        ]
+    },
+    {
+        texto: "Você viu uma promoção de balas 🍬.",
+        opcoes: [
+            "Guardar dinheiro para algo que realmente quer",
+            "Comprar só algumas balas",
+            "Comprar todas as balas de uma vez"
+        ],
+        tipos: ["certa", "medio", "errada"],
+        mensagens: [
+            "✅ Muito bem! Assim você aprende a escolher o que vale mais a pena.",
+            "⚠ Está equilibrado! Você se diverte e ainda guarda um pouco.",
+            "❌ Não é legal gastar tudo de uma vez. Planejar é melhor!"
+        ]
+    },
+    {
+        texto: "Você recebeu sua mesada 💰.",
+        opcoes: [
+            "Separar a mesada em cofrinho, diversão e presente",
+            "Guardar só uma parte e gastar o resto sem pensar",
+            "Gastar toda a mesada assim que recebe"
+        ],
+        tipos: ["certa", "medio", "errada"],
+        mensagens: [
+            "✅ Perfeito! Dividir ajuda a controlar o dinheiro e aprender prioridades.",
+            "⚠ Está começando a se organizar, mas ainda pode melhorar no planejamento.",
+            "❌ Não é legal gastar tudo de uma vez. Planejar ajuda você a ter mais escolhas!"
+        ]
+    },
+    {
+        texto: "Você quer comprar um presente para um amigo 🎁.",
+        opcoes: [
+            "Guardar parte do dinheiro para você e comprar um presente",
+            "Dar quase todo o dinheiro de presente",
+            "Não comprar nada nem guardar"
+        ],
+        tipos: ["certa", "medio", "errada"],
+        mensagens: [
+            "✅ Ótimo! Você aprende a equilibrar diversão e economia.",
+            "⚠ É legal presentear, mas também é importante guardar para seus objetivos.",
+            "❌ Não é legal desperdiçar ou deixar de planejar. Economizar é melhor!"
         ]
     }
 ];
@@ -57,43 +87,29 @@ const estrelasP = document.getElementById("estrelas");
 const resultadoDiv = document.getElementById("resultado");
 const mensagemDiv = document.getElementById("mensagem-feedback");
 const porquinho = document.getElementById("porquinho");
-const container = document.querySelector(".container");
 
-// Sons
-const somMoeda = new Audio("https://www.soundjay.com/misc/sounds/coin-1.mp3");
-const somEstrela = new Audio("https://www.soundjay.com/button/sounds/button-3.mp3");
-
-function animarPorquinho(tipo) {
-    if(tipo === 'feliz') porquinho.textContent = "😄";
-    else if(tipo === 'medio') porquinho.textContent = "🙂";
-    else porquinho.textContent = "😢";
-
-    porquinho.style.animation = "pular 0.7s";
-    setTimeout(() => porquinho.style.animation = "", 700);
+function pularPorquinho() {
+    porquinho.style.animation = "pular 0.5s";
+    setTimeout(() => porquinho.style.animation = "", 500);
 }
 
 function gerarMoeda() {
     const moeda = document.createElement("div");
     moeda.classList.add("moeda");
     moeda.textContent = "🪙";
-    moeda.style.left = Math.random() * 70 + "%";
-    moeda.style.top = "0px";
-    moeda.style.animationDuration = (0.8 + Math.random() * 0.5) + "s";
-    container.appendChild(moeda);
-    somMoeda.play();
-    setTimeout(() => moeda.remove(), 1500);
+    moeda.style.left = Math.random() * 80 + "%";
+    document.body.appendChild(moeda);
+    setTimeout(() => moeda.remove(), 1000);
 }
 
 function gerarEstrela() {
     const estrela = document.createElement("div");
     estrela.classList.add("estrela");
     estrela.textContent = "⭐";
-    estrela.style.left = Math.random() * 70 + "%";
-    estrela.style.top = "0px";
-    estrela.style.animationDuration = (0.8 + Math.random() * 0.5) + "s";
-    container.appendChild(estrela);
-    somEstrela.play();
-    setTimeout(() => estrela.remove(), 1500);
+    estrela.style.left = Math.random() * 80 + "%";
+    estrela.style.top = Math.random() * 50 + "%";
+    document.body.appendChild(estrela);
+    setTimeout(() => estrela.remove(), 1000);
 }
 
 function atualizarStatus() {
@@ -125,45 +141,44 @@ function mostrarSituacao() {
     mensagemDiv.textContent = "";
     mensagemDiv.classList.remove("aparecer");
 
-    situacao.opcoes.forEach((opcao, i) => {
-        const btn = document.createElement("button");
-        btn.textContent = opcao.texto;
+    // Criar array com todas as opções e embaralhar
+    let opcoesCompletas = situacao.opcoes.map((opcao, i) => ({
+        texto: opcao,
+        tipo: situacao.tipos[i],
+        mensagem: situacao.mensagens[i]
+    }));
+    opcoesCompletas.sort(() => Math.random() - 0.5); // embaralhar opções
 
-        if (opcao.texto.includes("Guardar")) btn.classList.add("btn-guardar");
-        else if (opcao.texto.includes("Comprar")) btn.classList.add("btn-comprar");
-        else btn.classList.add("btn-parcial");
+    opcoesCompletas.forEach((opcaoObj) => {
+        const btn = document.createElement("button");
+        btn.textContent = opcaoObj.texto;
+        btn.classList.add("opcao-rosa"); // cor inicial
 
         btn.onclick = () => {
-            mensagemDiv.textContent = opcao.mensagem;
+            mensagemDiv.textContent = opcaoObj.mensagem;
             mensagemDiv.classList.add("aparecer");
 
-            switch(opcao.tipo){
-                case "certa":
-                    btn.classList.add("certa");
-                    moedas += 10;
-                    estrelas += 1;
-                    animarPorquinho('feliz');
-                    gerarMoeda();
-                    gerarEstrela();
-                    humor = "😄 Muito feliz!";
-                    break;
-                case "medio":
-                    btn.classList.add("certa");
-                    moedas += 5;
-                    estrelas += 0.5;
-                    animarPorquinho('medio');
-                    gerarMoeda();
-                    gerarEstrela();
-                    humor = "🙂 Bom trabalho!";
-                    break;
-                case "errada":
-                    btn.classList.add("errada");
-                    moedas -= 5;
-                    if(moedas < 0) moedas = 0;
-                    animarPorquinho('triste');
-                    humor = "😐 Pense na próxima vez!";
-                    break;
+            btn.classList.remove("opcao-rosa");
+            btn.classList.add(opcaoObj.tipo);
+
+            if (opcaoObj.tipo === "certa") {
+                moedas += 10;
+                estrelas += 1;
+                pularPorquinho();
+                gerarMoeda();
+                gerarEstrela();
+            } else if (opcaoObj.tipo === "medio") {
+                moedas += 5;
+                pularPorquinho();
+                gerarMoeda();
+            } else {
+                moedas -= 5;
+                if (moedas < 0) moedas = 0;
             }
+
+            if (moedas < 10) humor = "😐 Pense na próxima vez!";
+            else if (moedas < 30) humor = "🙂 Bom trabalho!";
+            else humor = "😄 Muito feliz!";
 
             atualizarStatus();
             rodadaAtual++;
@@ -193,8 +208,8 @@ function fimDoJogo() {
         <p>Moedas finais: ${moedas}</p>
         <p>Estrelas conquistadas: ${estrelas}/${totalRodadas}</p>`;
 
-    if (moedas >= 30) resultadoDiv.innerHTML += "<p>🎉 Seu Poupancinha está super feliz! Você tomou ótimas decisões!</p>";
-    else if (moedas >= 10) resultadoDiv.innerHTML += "<p>🙂 Seu Poupancinha está feliz! Continue tomando boas decisões!</p>";
+    if (moedas >= 40) resultadoDiv.innerHTML += "<p>🎉 Seu Poupancinha está super feliz! Você tomou ótimas decisões!</p>";
+    else if (moedas >= 20) resultadoDiv.innerHTML += "<p>🙂 Seu Poupancinha está feliz! Continue tomando boas decisões!</p>";
     else resultadoDiv.innerHTML += "<p>😐 Seu Poupancinha ainda pode melhorar. Tente planejar melhor da próxima vez!</p>";
 }
 

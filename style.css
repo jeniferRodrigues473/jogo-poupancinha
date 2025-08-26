@@ -7,7 +7,6 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden;
 }
 
 /* Container principal */
@@ -20,7 +19,6 @@ body {
     max-width: 500px;
     text-align: center;
     animation: fadeInUp 0.5s ease;
-    position: relative;
 }
 
 /* Título */
@@ -35,11 +33,11 @@ h1 {
     margin-bottom: 15px;
 }
 
-/* Texto da situação - cor fofinha */
+/* Texto da situação */
 #situacao-texto {
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin-bottom: 15px;
-    color: #d6336c;
+    color: #ff69b4;
 }
 
 /* Botões de opções */
@@ -56,21 +54,23 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Cores sólidas fofas */
-.btn-comprar { background-color: #f953a3; color:white; }
-.btn-guardar { background-color: #ff85c1;color:white; }
-.btn-esperar { background-color: #ffb3d9;color:white; }
-.btn-parcial { background-color: #ff85c1;color:white; }
+/* Botão rosa fofo antes de clicar */
+button.opcao-rosa {
+    background-color: #ffb6c1; /* rosa fofo */
+    color: white;
+}
 
-#opcoes button:hover {
+button.opcao-rosa:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Feedback */
-button.certa { background-color: #a2f5a2; color: #006400; }
-button.errada { background-color: #f5a2a2; color: #800000; }
+/* Cores depois de clicar */
+button.certa { background-color: #a2f5a2; color: #006400; } /* verde */
+button.medio { background-color: #fff59d; color: #8b8000; } /* amarelo */
+button.errada { background-color: #f5a2a2; color: #800000; } /* vermelho */
 
+/* Feedback */
 #mensagem-feedback {
     font-size: 18px;
     margin: 15px 0;
@@ -102,7 +102,13 @@ button.errada { background-color: #f5a2a2; color: #800000; }
     animation: bounce 0.5s;
 }
 
-/* Botão Próxima */
+/* Animação bounce */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* Botão Próxima Situação */
 .btn-proxima {
     background-color: #ff69b4;
     color: white;
@@ -126,7 +132,7 @@ button.errada { background-color: #f5a2a2; color: #800000; }
     animation: fadeIn 0.5s ease;
 }
 
-/* Animações */
+/* Animações gerais */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -137,11 +143,14 @@ button.errada { background-color: #f5a2a2; color: #800000; }
     100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+/* Resultado final */
+#resultado {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #ff1493;
 }
 
+/* Porquinho pulando */
 @keyframes pular {
     0%, 100% { transform: translateY(0) scale(1); }
     25% { transform: translateY(-20px) scale(1.1); }
@@ -149,37 +158,29 @@ button.errada { background-color: #f5a2a2; color: #800000; }
     75% { transform: translateY(-20px) scale(1.1); }
 }
 
+/* Moedas caindo */
 @keyframes cairMoeda {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     50% { transform: translateY(75px) rotate(180deg); opacity: 0.8; }
     100% { transform: translateY(150px) rotate(360deg); opacity: 0; }
 }
-
 .moeda {
     position: absolute;
     font-size: 28px;
     pointer-events: none;
     animation: cairMoeda 1s linear forwards;
-    text-shadow: 0 0 8px gold;
 }
 
+/* Estrelinhas piscando */
 @keyframes piscar {
     0%, 100% { opacity: 1; transform: scale(1); }
     25% { opacity: 0.8; transform: scale(1.2) rotate(10deg); }
     50% { opacity: 0.4; transform: scale(1.5) rotate(-10deg); }
     75% { opacity: 0.8; transform: scale(1.2) rotate(10deg); }
 }
-
 .estrela {
     position: absolute;
     font-size: 22px;
     pointer-events: none;
     animation: piscar 1s ease-in-out;
-    text-shadow: 0 0 6px yellow;
-}
-
-#resultado {
-    font-size: 20px;
-    margin-top: 20px;
-    color: #ff1493;
 }
